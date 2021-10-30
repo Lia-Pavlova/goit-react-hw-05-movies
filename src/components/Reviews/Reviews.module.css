@@ -1,0 +1,41 @@
+.wrapper {
+  padding: 5px 25px 25px 25px;
+  width: 100%;
+  background-color: rgb(41, 41, 41);
+  display: flex;
+  justify-content: center;
+}
+
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.review {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: rgba(0, 63, 100, 0.8);
+  border-radius: 20px;
+}
+
+.author {
+  margin-right: 10px;
+  /* color: rgb(5, 121, 141); */
+  /* color: aqua; */
+  color: white;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+}
+
+.authorBox {
+  display: flex;
+  align-items: baseline;
+  color: aqua;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.content {
+  color: rgba(255, 255, 255, 0.7);
+}
