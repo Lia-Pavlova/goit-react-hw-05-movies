@@ -13,7 +13,6 @@
   height: 50px;
   width: 500px;
   border-radius: 15px;
-  /* background: rgba(0, 0, 100, 0.4); */
   background: linear-gradient(
     to right,
     rgba(0, 63, 100, 0.8) 0%,
@@ -28,8 +27,14 @@
 
 .formInput:hover,
 .formInput:focus {
-  box-shadow: 1px 1px 8px 1px rgba(0, 63, 100, 0.8);
+  box-shadow: 1px 1px 8px 5px rgba(5, 121, 141, 0.8);
+  outline: none;
 }
+
+input.formInput::placeholder {
+  color: #89dd9e;
+}
+
 .btnSub {
   color: white;
   font-weight: 700;
@@ -39,7 +44,6 @@
   width: 60px;
   text-align: center;
   border: 1.5px solid;
-  /* background: rgba(0, 0, 100, 0.4); */
   padding: 10px;
   transition: all 200ms ease;
   background: linear-gradient(
@@ -53,9 +57,11 @@
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   border-radius: 15px;
 }
+
 .btnSub:hover,
 .btnSub:focus {
   background-position: right center;
+  outline: none;
 }
 
 .movieSearch {

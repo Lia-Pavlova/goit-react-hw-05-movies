@@ -1,6 +1,11 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-// import defaultPoster from '../MoviesList/defaultPoster.png'
+// import * as movieApi from '../../services/API';
+// import WatchTrailerButton from '../WatchTrailerBtn/WatchTrailerBtn';
+// import Modal from '../Modal/Modal';
+// import YouTubeFrame from '../YouTubeFrame/YouTubeFrame';
+import defaultPoster from '../MoviesList/defaultPoster.png';
+// import { ReactComponent as YouTubeIcon } from '../WatchTrailerBtn/youtube-icon.svg';
 import s from './MovieDetails.module.css';
 
 import PropTypes from 'prop-types';
@@ -9,6 +14,9 @@ import { useState, useEffect } from 'react';
 const MovieDetails = ({ movie, match, history, location }) => {
   const [back, setBack] = useState();
   const backDate = history.location.state;
+  // const [trailers, setTrailers] = useState(null);
+  // const [showModal, setShowModal] = useState(false);
+  // const [status, setStatus] = useState('idle');
 
   useEffect(() => {
     backDate && setBack(backDate);
@@ -17,6 +25,30 @@ const MovieDetails = ({ movie, match, history, location }) => {
   const GoBack = () => {
     history.push(back?.from);
   };
+
+  // useEffect(
+  //   () => {
+  //     getTrailers();
+  //   },
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   [],
+  // );
+
+  // const getTrailers = () => {
+  //   setStatus('pending');
+  //   movieApi.fetchTrailers().then(response => {
+  //     const data = response.results;
+  //     setTrailers(data);
+  //     setStatus('resolved');
+  //     if (status === 'resolved') {
+  //       toggleModal();
+  //     }
+  //   });
+  // };
+
+  // const toggleModal = () => {
+  //   setShowModal(!showModal);
+  // };
 
   return (
     <div className={s.wrapper}>
@@ -27,6 +59,12 @@ const MovieDetails = ({ movie, match, history, location }) => {
       <button className={s.goBack} type="button" onClick={GoBack}>
         <span className={`material-icons ${s.arrowBack}`}>west</span>
       </button>
+      {/* {showModal && (
+        <Modal onToggle={toggleModal} aria-label="open trailers">
+          <YouTubeFrame trailers={trailers} />
+        </Modal>
+      )} */}
+
       <div
         className={s.poster}
         style={{
@@ -37,11 +75,19 @@ const MovieDetails = ({ movie, match, history, location }) => {
         <div className={s.posterOverlay}></div>
         <div className={s.description}>
           <div className={s.image}>
-            <img
-              className={s.smallImg}
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path} `}
-              alt={movie.original_name}
-            />
+            {movie.poster_path ? (
+              <img
+                className={s.smallImg}
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path} `}
+                alt={movie.original_name}
+              />
+            ) : (
+              <img
+                className={s.smallImg}
+                src={defaultPoster}
+                alt={movie.original_name}
+              />
+            )}
 
             <a
               className={s.movieHomepage}
@@ -108,6 +154,11 @@ const MovieDetails = ({ movie, match, history, location }) => {
               >
                 Отзывы
               </NavLink>
+              {/* <article className="movieArticle trailerButton">
+                <WatchTrailerButton onClick={getTrailers}>
+                  <YouTubeIcon width="80" height="50" />
+                </WatchTrailerButton>
+              </article> */}
             </nav>
           </div>
         </div>
